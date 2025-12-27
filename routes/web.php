@@ -6,6 +6,9 @@ use App\Http\Controllers\UserDataController;
 use App\Http\Controllers\UserDBController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ApiCallController;
+use App\Http\Controllers\DBQueryController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\InsertDataController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,3 +57,20 @@ Route::get('users', [UserDBController::class, 'users']);
 Route::get('students', [StudentController::class, 'getData']);
 
 Route::get('api-call', [ApiCallController::class, 'getData']);
+
+
+Route::get('DBQuery', [DBQueryController::class, 'query']);
+
+Route::view('login', 'login');
+Route::post('session', [SessionController::class, 'login']);
+Route::view('session', 'session');
+
+Route::view('add', 'insert-data')->name('insert.form');
+Route::controller(InsertDataController::class)->group(function () {
+    Route::post('add', 'add')->name('insert.store');
+    Route::get('data', 'fetchData')->name('Inserted-Data-Fetch');
+    Route::get('delete/{id}', 'delete')->name('insert.delete');
+    Route::get('edit/{id}', 'populateData')->name('insert.populateData');
+    Route::put('edit/{id}', 'update')->name('insert.update');
+    Route::get('search', 'search')->name('insert.search');
+});
