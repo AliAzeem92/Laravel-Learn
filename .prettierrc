@@ -1,0 +1,14 @@
+{
+    "singleQuote": true,
+    "trailingComma": "none",
+    "plugins": ["@prettier/plugin-php"],
+    "overrides": [
+        {
+            "files": ["*.php"],
+            "options": {
+                "tabWidth": 4,
+                "singleQuote": true
+            }
+        }
+    ]
+}

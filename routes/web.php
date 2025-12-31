@@ -56,7 +56,7 @@ Route::get('users', [UserDBController::class, 'users']);
 
 Route::get('students', [StudentController::class, 'getData']);
 
-Route::get('api-call', [ApiCallController::class, 'getData']);
+Route::get('dummy-api-call', [ApiCallController::class, 'getData']);
 
 
 Route::get('DBQuery', [DBQueryController::class, 'query']);
